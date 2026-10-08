@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Simple Auto Refresh",
+  "version": "1.0.0",
+  "description": "Automatically refresh the active tab.",
+  "permissions": ["alarms", "tabs", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "index.html"
+  }
+}
