@@ -1,15 +1,16 @@
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import { resolve } from "path";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
 
   build: {
     rollupOptions: {
       input: {
-        index: resolve(__dirname, "index.html"),
-        background: resolve(__dirname, "src/background.ts"),
+        index: fileURLToPath(new URL("./index.html", import.meta.url)),
+        background: fileURLToPath(new URL("./src/background/index.ts", import.meta.url)),
       },
 
       output: {
