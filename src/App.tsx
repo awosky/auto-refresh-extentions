@@ -23,10 +23,9 @@ function App() {
     }
 
     const elapsed = (currentTime - rule.startedAt) / 1000;
-
     const remaining = rule.seconds - (elapsed % rule.seconds);
 
-    return Math.ceil(remaining);
+    return Math.min(Math.ceil(remaining), rule.seconds);
   };
 
   useEffect(() => {
