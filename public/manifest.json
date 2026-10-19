@@ -15,5 +15,12 @@
     "32": "icons/logo-32.png",
     "128": "icons/logo-128.png",
     "512": "icons/logo-512.png"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
 }

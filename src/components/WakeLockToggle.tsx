@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { controlWakeLock } from "../wakelock/index";
 
 const WakeLockToggle = () => {
   const [enabled, setEnabled] = useState(false);
@@ -7,33 +6,31 @@ const WakeLockToggle = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    let active = true;
-
-    void controlWakeLock("status").then((result) => {
-      if (active) {
-        setEnabled(result.enabled);
-      }
-    });
-
-    return () => {
-      active = false;
-    };
+    chrome.storage.local
+      .get("keepAwakeEnabled")
+      .then((result) => {
+        setEnabled(result.keepAwakeEnabled === true);
+      })
+      .finally(() => setBusy(false));
   }, []);
 
   async function toggleWakeLock() {
     setBusy(true);
     setError("");
 
-    const action = enabled ? "disable" : "enable";
-    const result = await controlWakeLock(action);
+    const nextEnabled = !enabled;
 
-    setEnabled(result.enabled);
+    try {
+      await chrome.storage.local.set({
+        keepAwakeEnabled: nextEnabled,
+      });
 
-    if (result.error) {
-      setError(result.error);
+      setEnabled(nextEnabled);
+    } catch (error) {
+      setError(`Could not save Wake Lock setting. ${error instanceof Error ? error.message : ""}`);
+    } finally {
+      setBusy(false);
     }
-
-    setBusy(false);
   }
 
   return (
