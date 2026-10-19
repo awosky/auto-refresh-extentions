@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import CurrentTab from "./components/CurrentTab";
 import Footer from "./components/Footer";
 import ActiveRules from "./components/ActiveRules";
+import WakeLockToggle from "./components/WakeLockToggle";
 
 function App() {
   const [now, setNow] = useState(0);
@@ -78,6 +79,7 @@ function App() {
     <div className="w-87.5 bg-slate-950 p-5 text-slate-100">
       <Header />
       <CurrentTab currentTab={currentTab} seconds={seconds} setSeconds={setSeconds} addRule={addRule} />
+      <WakeLockToggle />
       <ActiveRules rules={rules} now={now} getRemaining={getRemaining} removeRule={removeRule} loadRules={loadRules} />
       <Footer />
     </div>

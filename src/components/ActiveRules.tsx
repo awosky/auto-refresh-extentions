@@ -30,7 +30,7 @@ const ActiveRules = ({ rules, now, getRemaining, removeRule, loadRules }: Props)
           <p className="mt-1 text-xs text-slate-500">Add the current tab to start refreshing.</p>
         </div>
       ) : (
-        <div className="max-h-75 space-y-3 overflow-y-auto pr-1 scrollbar-none">
+        <div className="max-h-75 space-y-3 overflow-y-auto pr-2 custom-scrollbar">
           {rules.map((rule) => {
             const remaining = getRemaining(rule, now);
 
