@@ -56,7 +56,7 @@ chrome.runtime.onMessage.addListener(async (message) => {
     await chrome.alarms.clear(`refresh-${message.tabId}`);
 
     await chrome.alarms.create(`refresh-${message.tabId}`, {
-      periodInMinutes: rule.seconds / 60,
+      periodInMinutes: Number(rule.seconds) / 60,
     });
   }
 

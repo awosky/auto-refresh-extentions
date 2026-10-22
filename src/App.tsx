@@ -8,7 +8,7 @@ import WakeLockToggle from "./components/WakeLockToggle";
 
 function App() {
   const [now, setNow] = useState(0);
-  const [seconds, setSeconds] = useState(30);
+  const [seconds, setSeconds] = useState("30");
   const [rules, setRules] = useState<RefreshRule[]>([]);
   const [currentTab, setCurrentTab] = useState<chrome.tabs.Tab | null>(null);
 
@@ -20,13 +20,13 @@ function App() {
 
   const getRemaining = (rule: RefreshRule, currentTime: number) => {
     if (!rule.running || !rule.startedAt || currentTime === 0) {
-      return rule.seconds;
+      return Number(rule.seconds);
     }
 
     const elapsed = (currentTime - rule.startedAt) / 1000;
-    const remaining = rule.seconds - (elapsed % rule.seconds);
+    const remaining = Number(rule.seconds) - (elapsed % Number(rule.seconds));
 
-    return Math.min(Math.ceil(remaining), rule.seconds);
+    return Math.min(Math.ceil(remaining), Number(rule.seconds));
   };
 
   useEffect(() => {

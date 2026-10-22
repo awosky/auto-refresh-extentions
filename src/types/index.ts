@@ -1,7 +1,7 @@
 export type RefreshRule = {
   tabId: number;
   url: string;
-  seconds: number;
+  seconds: string;
   running: boolean;
   startedAt: number | null;
 };

@@ -11,7 +11,7 @@ type Props = {
 
 const ActiveRules = ({ rules, now, getRemaining, removeRule, loadRules }: Props) => {
   const [editingTabId, setEditingTabId] = useState<number | null>(null);
-  const [editingSeconds, setEditingSeconds] = useState(30);
+  const [editingSeconds, setEditingSeconds] = useState("30");
 
   return (
     <section>
@@ -129,7 +129,7 @@ const ActiveRules = ({ rules, now, getRemaining, removeRule, loadRules }: Props)
                         type="number"
                         min="1"
                         value={editingSeconds}
-                        onChange={(e) => setEditingSeconds(Number(e.target.value))}
+                        onChange={(e) => setEditingSeconds(e.target.value)}
                         className="min-w-0 appearance-none flex-1 rounded-xl border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-white outline-none transition focus:border-indigo-500 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                       />
 
@@ -144,7 +144,11 @@ const ActiveRules = ({ rules, now, getRemaining, removeRule, loadRules }: Props)
                           setEditingTabId(null);
                           await loadRules();
                         }}
-                        disabled={!Number.isFinite(editingSeconds) || editingSeconds < 1}
+                        disabled={
+                          editingSeconds.trim() === "" ||
+                          !Number.isFinite(Number(editingSeconds)) ||
+                          Number(editingSeconds) < 1
+                        }
                         className="rounded-xl bg-indigo-500 px-4 py-2 text-xs font-semibold text-white transition hover:bg-indigo-400 disabled:cursor-not-allowed disabled:opacity-40"
                       >
                         Save

@@ -44,7 +44,7 @@ export const updateBadges = async () => {
 
     const elapsed = (Date.now() - rule.startedAt) / 1000;
 
-    const remaining = rule.seconds - (elapsed % rule.seconds);
+    const remaining = Number(rule.seconds) - (elapsed % Number(rule.seconds));
 
     await chrome.action.setBadgeText({
       tabId: rule.tabId,
