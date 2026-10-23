@@ -12,6 +12,7 @@ chrome.runtime.onMessage.addListener(async (message) => {
     const rule: RefreshRule = {
       tabId: message.tabId,
       url: message.url,
+      title: message.title || message.url,
       seconds: message.seconds,
       running: true,
       startedAt: Date.now(),
@@ -124,6 +125,24 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
     await removeRule(tabId);
   }
 });
+
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+  if (changeInfo.status !== "complete") return;
+
+  if (!tab.url) return;
+
+  const rules = await getRules();
+  const rule = getRule(rules, tabId);
+
+  if (!rule) return;
+
+  rule.url = tab.url;
+
+  rule.title = tab.title || tab.url;
+
+  await saveRules(rules);
+});
+
 
 chrome.tabs.onRemoved.addListener(async (tabId) => {
   await removeRule(tabId);

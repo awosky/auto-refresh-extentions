@@ -60,6 +60,7 @@ function App() {
       type: "ADD_RULE",
       tabId: currentTab.id,
       url: currentTab.url,
+      title: currentTab.title,
       seconds,
     });
 

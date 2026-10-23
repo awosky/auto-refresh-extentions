@@ -48,8 +48,8 @@ const ActiveRules = ({ rules, now, getRemaining, removeRule, loadRules }: Props)
                   />
 
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium text-slate-200" title={rule.url}>
-                      {rule.url}
+                    <p className="truncate text-sm font-medium text-slate-200" title={rule.title || rule.url}>
+                      {rule.title || rule.url}
                     </p>
 
                     <span
