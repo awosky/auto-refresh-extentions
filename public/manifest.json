@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Simple Auto Refresh",
-  "version": "1.0.5",
-  "description": "Automatically refresh the active tab.",
+  "name": "Tab Keeper",
+  "version": "1.0.6",
+  "description": "Automatically refresh tabs and help keep your screen awake.",
   "permissions": ["alarms", "tabs", "storage", "activeTab", "scripting"],
   "background": {
     "service_worker": "background.js"
