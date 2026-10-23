@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Simple Auto Refresh",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Automatically refresh the active tab.",
   "permissions": ["alarms", "tabs", "storage", "activeTab", "scripting"],
   "background": {
