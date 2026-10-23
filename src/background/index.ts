@@ -128,3 +128,10 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
 chrome.tabs.onRemoved.addListener(async (tabId) => {
   await removeRule(tabId);
 });
+
+chrome.runtime.onStartup.addListener(async () => {
+  await chrome.storage.local.set({
+    keepAwakeEnabled: false,
+    rules: [],
+  });
+});

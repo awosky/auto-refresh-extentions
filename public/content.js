@@ -55,8 +55,6 @@
         },
         { once: true },
       );
-
-      console.log("Screen Wake Lock acquired.");
     } catch (error) {
       console.warn("Screen Wake Lock request failed:", error);
     } finally {
