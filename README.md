@@ -1,6 +1,6 @@
-# Tab Keeper
+# Refresh Mate
 
-Tab Keeper is a Chrome extension for refreshing tabs on a schedule and keeping your screen awake while you browse. Configure refresh rules for individual tabs, monitor their countdowns, and enable the screen wake lock when you need a page to stay visible without the display sleeping.
+Refresh Mate is a Chrome extension for refreshing tabs on a schedule and keeping your screen awake while you browse. Configure refresh rules for individual tabs, monitor their countdowns, and enable the screen wake lock when you need a page to stay visible without the display sleeping.
 
 ## Features
 
@@ -13,7 +13,7 @@ Tab Keeper is a Chrome extension for refreshing tabs on a schedule and keeping y
 
 ## How It Works
 
-The popup sends rule changes to the Manifest V3 background service worker. The worker saves rules in `chrome.storage.local` and schedules refreshes with Chrome alarms. When an alarm fires for a running rule, Tab Keeper reloads that tab and resets its countdown. Closing a tab removes its rule.
+The popup sends rule changes to the Manifest V3 background service worker. The worker saves rules in `chrome.storage.local` and schedules refreshes with Chrome alarms. When an alarm fires for a running rule, Refresh Mate reloads that tab and resets its countdown. Closing a tab removes its rule.
 
 The **Keep Screen Awake** setting is shared across pages. A content script reads the setting and requests a screen wake lock through the browser's Screen Wake Lock API while an HTTP or HTTPS page is visible. If the browser releases the lock, the script attempts to reacquire it; hidden pages do not hold a lock. This feature depends on browser support and page visibility.
 

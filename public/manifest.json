@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Tab Keeper",
-  "version": "1.0.6",
+  "name": "Refresh Mate",
+  "version": "1.0.7",
   "description": "Automatically refresh tabs and help keep your screen awake.",
   "permissions": ["alarms", "tabs", "storage", "activeTab", "scripting"],
   "background": {
